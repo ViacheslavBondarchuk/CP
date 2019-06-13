@@ -1,5 +1,3 @@
-package application;
-
 public class Date {
 
     private int id;

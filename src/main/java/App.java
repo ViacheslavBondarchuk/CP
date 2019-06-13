@@ -1,5 +1,3 @@
-package application;
-
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +14,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../UI/Scene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/Scene.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("Cyber Policy");
         primaryStage.setResizable(false);
