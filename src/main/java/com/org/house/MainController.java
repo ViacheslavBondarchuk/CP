@@ -1,3 +1,5 @@
+package com.org.house;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 
