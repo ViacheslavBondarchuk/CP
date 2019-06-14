@@ -28,8 +28,8 @@ public class WorkDB {
 
     private DialogMessage message = new DialogMessage();
 
-    public void Connect() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:postgresql://localhost/OiB", "postgres", "0");
+    public void Connect(String url, String db,String user, String password) throws SQLException {
+        connection = DriverManager.getConnection(String.format("jdbc:postgresql://%s/%s",url,db),user,password);
         statement = connection.createStatement();
         message.message("Connection has been established !", AlertType.INFORMATION);
     }

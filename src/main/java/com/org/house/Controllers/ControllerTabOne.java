@@ -1,5 +1,9 @@
-package com.org.house;
+package com.org.house.Controllers;
 
+import com.org.house.Date;
+import com.org.house.DialogMessage;
+import com.org.house.Parse;
+import com.org.house.WorkDB;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -138,13 +142,7 @@ public class ControllerTabOne {
     private Button btnOpenFileForGet;
 
     @FXML
-    private Button btnConnect;
-
-    @FXML
     private Button btnRefreshTableView;
-
-    @FXML
-    private Button btnCloseConnect;
 
     @FXML
     private Button btnStart;
@@ -178,9 +176,6 @@ public class ControllerTabOne {
 
     @FXML
     private Button btnDecOrder;
-
-    @FXML
-    private ImageView imgView;
 
     @FXML
     private Button btnStop;
@@ -236,23 +231,6 @@ public class ControllerTabOne {
                 chkBoxParseToDB.setDisable(false);
             }
         });
-        btnConnect.setOnAction(e -> {
-            try {
-                workDB.Connect();
-                imgView.setImage(new Image("Image/ConGreen.png"));
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-        });
-        btnCloseConnect.setOnAction(e -> {
-            try {
-                workDB.closeConnection();
-                imgView.setImage(new Image("Image/ConRed.png"));
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-        });
-
         tglBtnPause.setOnAction(e -> {
             pause();
         });
@@ -294,9 +272,6 @@ public class ControllerTabOne {
                 new DialogMessage().message("Process was stoped", AlertType.INFORMATION);
             }
         });
-
-        imgView.setImage(new Image("Image/ConRed.png"));
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 
     private void openFileForGetPath() {

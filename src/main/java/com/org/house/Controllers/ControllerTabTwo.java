@@ -1,5 +1,8 @@
-package com.org.house;
+package com.org.house.Controllers;
 
+import com.org.house.Cipher;
+import com.org.house.DialogMessage;
+import com.org.house.WorkDB;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -8,7 +11,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 
 public class ControllerTabTwo {
 
@@ -18,6 +20,7 @@ public class ControllerTabTwo {
 
     private Cipher cipher = new Cipher();
     private WorkDB workDB = new WorkDB();
+    private DialogMessage mg = new DialogMessage();
 
     @FXML
     private ResourceBundle resources;
@@ -37,6 +40,7 @@ public class ControllerTabTwo {
         btnAdd.setOnAction(e -> {
             try {
                 getDate();
+                mg.notification();
             } catch (NoSuchAlgorithmException e1) {
                 e1.printStackTrace();
             } catch (SQLException e1) {
@@ -61,7 +65,7 @@ public class ControllerTabTwo {
         note = strMass[6];
 
         workDB.writeInDBfromExcel(name, city, login, loginHash, password, passwordHash, filePath, fileName, note);
-        new DialogMessage().message("Was executed succefull", AlertType.INFORMATION);
+//        new DialogMessage().message("Was executed succefull", AlertType.INFORMATION);
     }
 
 }

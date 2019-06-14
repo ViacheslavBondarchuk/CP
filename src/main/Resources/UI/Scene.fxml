@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="956.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.org.house.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="956.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.org.house.Controllers.MainController">
    <children>
       <TabPane layoutY="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="925.0" prefWidth="1282.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
@@ -21,6 +21,10 @@
                   <fx:include source="../UI/additionalTab.fxml" />
                </content>
             </Tab>
+            <Tab text="Connection">
+               <content>
+                  <fx:include source="ThreeTab.fxml" />
+               </content></Tab>
          </tabs>
       </TabPane>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1281.0">

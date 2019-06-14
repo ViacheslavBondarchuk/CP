@@ -1,5 +1,6 @@
-package com.org.house;
+package com.org.house.Controllers;
 
+import com.org.house.DialogMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 
@@ -7,8 +8,12 @@ public class MainController {
 
     @FXML
     ControllerTabOne controllerTabOne;
+
     @FXML
     ControllerTabTwo controllerTabTwo;
+
+    @FXML
+    ControllerTabThree ControllerTabThree;
 
     @FXML
     private MenuItem menuItemContact;
