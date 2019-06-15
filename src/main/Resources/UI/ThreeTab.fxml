@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -66,5 +67,11 @@
          </font>
       </Label>
       <ImageView fx:id="imgViewConnect" fitHeight="27.0" fitWidth="28.0" layoutX="175.0" layoutY="832.0" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox fx:id="comboBoxTable" layoutX="565.0" layoutY="570.0" prefWidth="150.0" />
+      <Label layoutX="619.0" layoutY="530.0" text="Table">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

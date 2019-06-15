@@ -4,8 +4,11 @@ import com.org.house.WorkDB;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -14,11 +17,13 @@ import javafx.scene.layout.AnchorPane;
 
 public class ControllerTabThree {
 
-    private WorkDB workDB;
+    private static ObservableList<String> tableList = FXCollections.observableArrayList();
 
-    public ControllerTabThree() {
-        workDB = new WorkDB();
+    public ObservableList<String> getTableList() {
+        return tableList;
     }
+
+    private static WorkDB workDB = new WorkDB();
 
     @FXML
     private AnchorPane AnchPainConnect;
@@ -45,11 +50,16 @@ public class ControllerTabThree {
     private ImageView imgViewConnect;
 
     @FXML
+    private ComboBox<String> comboBoxTable;
+
+    @FXML
     private void initialize() {
         imgViewConnect.setImage(new Image("/Image/ConRed.png"));
         btnConnect.setOnAction(e -> {
             try {
                 connect();
+                workDB.metaData();
+                comboBoxTable.setItems(tableList);
             } catch (SQLException ex) {
                 Logger.getLogger(ControllerTabThree.class.getName()).log(Level.SEVERE, null, ex);
             }

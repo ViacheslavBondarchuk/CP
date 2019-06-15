@@ -1,6 +1,8 @@
 package com.org.house;
 
+import com.org.house.Controllers.ControllerTabThree;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +21,7 @@ public class WorkDB {
     private static Statement statement;
     private static Connection connection;
     private static ResultSet resultSet;
+    private static DatabaseMetaData metaData;
 
     private List<Date> listInformation = new ArrayList<Date>();
 
@@ -27,6 +30,7 @@ public class WorkDB {
     }
 
     private DialogMessage message = new DialogMessage();
+    private ControllerTabThree controllerTabThree = new ControllerTabThree();
 
     public void Connect(String url, String db, String user, String password) throws SQLException {
         connection = DriverManager.getConnection(String.format("jdbc:postgresql://%s/%s", url, db), user, password);
@@ -37,6 +41,15 @@ public class WorkDB {
     public void closeConnection() throws SQLException {
         connection.close();
         message.message("Connection was closed !", AlertType.INFORMATION);
+    }
+
+    public void metaData() throws SQLException {
+        metaData = connection.getMetaData();
+        resultSet = metaData.getTables(null, null, "%", new String[]{"TABLE"});
+        while (resultSet.next()) {
+            String table = resultSet.getString("TABLE_NAME");
+            controllerTabThree.getTableList().add(table);
+        }
     }
 
     public synchronized void writeInDBfromTxt(String login, String loginHash, String password, String passwordHash, String path, String fileName, String note) throws SQLException {
