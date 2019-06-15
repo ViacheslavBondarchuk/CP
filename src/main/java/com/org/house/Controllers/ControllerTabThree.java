@@ -6,9 +6,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class ControllerTabThree {
@@ -29,9 +30,6 @@ public class ControllerTabThree {
     private Button btnDisconnect;
 
     @FXML
-    private ComboBox<String> comboBox;
-
-    @FXML
     private TextField txtFieldURL;
 
     @FXML
@@ -44,7 +42,11 @@ public class ControllerTabThree {
     private TextField txtFieldBD;
 
     @FXML
+    private ImageView imgViewConnect;
+
+    @FXML
     private void initialize() {
+        imgViewConnect.setImage(new Image("/Image/ConRed.png"));
         btnConnect.setOnAction(e -> {
             try {
                 connect();
@@ -52,7 +54,13 @@ public class ControllerTabThree {
                 Logger.getLogger(ControllerTabThree.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-
+        btnDisconnect.setOnAction(e -> {
+            try {
+                disconnect();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerTabThree.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
     private void connect() throws SQLException {
@@ -63,5 +71,12 @@ public class ControllerTabThree {
         password = txtFieldPassword.getText();
 
         workDB.Connect(url, db, user, password);
+
+        imgViewConnect.setImage(new Image("/Image/ConGreen.png"));
+    }
+
+    private void disconnect() throws SQLException {
+        workDB.closeConnection();
+        imgViewConnect.setImage(new Image("/Image/ConRed.png"));
     }
 }

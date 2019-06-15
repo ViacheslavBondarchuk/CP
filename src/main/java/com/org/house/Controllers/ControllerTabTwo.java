@@ -14,10 +14,6 @@ import javafx.scene.control.TextField;
 
 public class ControllerTabTwo {
 
-    private String str;
-    private String[] strMass;
-    private String name, city, login, loginHash, password, passwordHash, filePath, fileName, note;
-
     private Cipher cipher = new Cipher();
     private WorkDB workDB = new WorkDB();
     private DialogMessage mg = new DialogMessage();
@@ -29,7 +25,25 @@ public class ControllerTabTwo {
     private URL location;
 
     @FXML
-    private TextField txtFieldDate;
+    private TextField txtFieldName;
+
+    @FXML
+    private TextField txtFieldCity;
+
+    @FXML
+    private TextField txtFieldPassword;
+
+    @FXML
+    private TextField txtFieldLogin;
+
+    @FXML
+    private TextField txtFieldFilePath;
+
+    @FXML
+    private TextField txtFieldNote;
+
+    @FXML
+    private TextField txtFieldFileName;
 
     @FXML
     private Button btnAdd;
@@ -51,21 +65,17 @@ public class ControllerTabTwo {
     }
 
     private void getDate() throws NoSuchAlgorithmException, SQLException {
-        str = txtFieldDate.getText();
-        strMass = str.split(",");
-
-        name = strMass[0];
-        city = strMass[1];
-        login = strMass[2];
-        loginHash = cipher.cipherLogin(login);
-        password = strMass[3];
-        passwordHash = cipher.cipherPassword(password);
-        filePath = strMass[4];
-        fileName = strMass[5];
-        note = strMass[6];
+        String name = txtFieldFileName.getText();
+        String city = txtFieldCity.getText();
+        String login = txtFieldLogin.getText();
+        String loginHash = cipher.cipherLogin(login);
+        String password = txtFieldPassword.getText();
+        String passwordHash = cipher.cipherPassword(password);
+        String filePath = txtFieldFilePath.getText();
+        String fileName = txtFieldFileName.getText();
+        String note = txtFieldNote.getText();
 
         workDB.writeInDBfromExcel(name, city, login, loginHash, password, passwordHash, filePath, fileName, note);
-//        new DialogMessage().message("Was executed succefull", AlertType.INFORMATION);
     }
 
 }

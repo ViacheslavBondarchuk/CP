@@ -38,11 +38,14 @@ public class DialogMessage {
                 + "2. Select checkBox 'PEWIDB'" + "\n"
                 + "3. Choose folder" + "\n"
                 + "4. Fill in the empty fields" + "\n"
-                + "5. Press on button 'Start'");
+                + "5. Press on button 'Start'" + "\n" + "\n"
+                + "Example connect to Data Base:" + "\n"
+                + "Local data base: URL: localhost:5432" + "\n"
+                + "Online data base: URL: penal.ba:5432");
         alert.showAndWait();
     }
-    
-    public void notification(){
+
+    public void notification() {
         Notifications.create()
                 .title("Information")
                 .text("Record has been successfully added")
@@ -51,6 +54,6 @@ public class DialogMessage {
                 .hideAfter(Duration.seconds(5))
                 .darkStyle()
                 .show();
-                
+
     }
 }
